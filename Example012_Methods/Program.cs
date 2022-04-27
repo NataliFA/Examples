@@ -1,33 +1,33 @@
-﻿// Вид 1
-/*
-void Method1();
+﻿/*
+// Вид 1. Метод ничего не принимает и ничего не возвращает
+
+void Method1()
 {
-    Console.Writeline("Автор...");
+    Console.WriteLine("Автор... ");
 }
 Method1();
-*/
-// Вид 2
-/*
-void Method2(string msg);
+
+// Вид 2. Методы, которые могут принимать какие-то аргументы, но в то же время ничего не возвращают.
+
+void Method2(string msg)
 {
     Console.WriteLine(msg);
 }
 Method2(msg:"Текст сообщения");
-*/
-/*
+
 void Method21(string msg1, int count)
 {
     int i = 0;
     while (i < count)
     {
-        Console.WriteLine(msg1);
+        Console.Write(msg1 + " ");
         i++;
     }
 }
 Method21("Текст", 4); //сколько раз хотим увидеть слово текст
 */
 
-// Вид 3
+// Вид 3. Могут что-то возвращать, но не принимают никаких аргументов. Обязательно указывать тип данных!
 /*
 int Method3()
 {
@@ -37,7 +37,7 @@ int year = Method3(); // сюда будет положен результат
 Console.WriteLine(year); // вывод результата
 */
 
-// Вид 4
+// Вид 4. Что-то принимают, что-то возвращают для дальнейшей работы. Часто используются.
 /*
 string Method4(int count, string text)
 {
@@ -51,7 +51,7 @@ string Method4(int count, string text)
     }
     return result;
 }
-string res = Method4(10, "z"); 
+string res = Method4(15, "z "); 
 Console.WriteLine(res);
 */
 
@@ -66,25 +66,22 @@ string Method4(int count, string text)
     }
     return result;
 }
-string res = Method4(10, "z"); 
+string res = Method4(12, "z "); 
 Console.WriteLine(res);
 */
 
 // Классическая задача вывода цикла в цикле - таблица умножения
-/*for (int i = 2; i < 10; i++)
+/*
+for (int i = 2; i < 10; i++)
 {
     for (int j = 2; j < 10; j++)
     {
         Console.WriteLine($"{i} x {j} = {i*j}");
     }
-    Console.WriteLine(); // переъод на новую строку
+    Console.WriteLine(); // переход на новую строку
 }
 */
-
-// Задача. Дан текст. В тексте нужно все пробелы заменить черточками,
-//маленькие буквы “к” заменить большими “К”, а большие “С” заменить
-//маленькими “с”.
-
+// Задача. Дан текст. В тексте нужно все пробелы заменить черточками, маленькие буквы “к” заменить большими “К”, а большие “С” заменить маленькими “с”.
 /*
 string text = "— Я думаю, — сказал князь, улыбаясь, — что, "
             + "ежели бы вас послали вместо нашего милого Винценгероде,"
@@ -107,7 +104,7 @@ string Replace(string text, char oldValue, char newValue)
     }
     return result;
 }
-string newText = Replace(text, ' ', '|');
+string newText = Replace(text, ' ', '/');
 Console.WriteLine(newText);
 Console.WriteLine();
 
@@ -121,38 +118,73 @@ Console.WriteLine(newText);
 
 //Задача. Алгоритм сортировки методом выбора (минимакса, максимального, минимального и тд)
 // Упорядочить массив. Выбрать элемент и поменять с минимальным.
+/*
+int[] arr = { 1, 2, 5, 4, 3, 6, 8, 7, 5, 3 };
 
-int[] arr = {1, 2, 5, 4, 3, 6, 1, 2, 5, 3};
-
-void PrintArray (int[] array)
+void PrintArray(int[] array)
 {
-
     int count = array.Length;
+
     for (int i = 0; i < count; i++)
     {
-        Console.Write($"{array[i]}");
+        Console.Write($"{array[i]} ");
     }
     Console.WriteLine();
 }
 
 void SelectionSort(int[] array)
 {
-    for (int i = 0; i < array.Length; i++)
+    for (int i = 0; i < array.Length - 1; i++)
     {
         int minPosition = i;
+
         for (int j = i + 1; j < array.Length; j++)
         {
             if (array[j] < array[minPosition]) minPosition = j;
-
         }
+
         int temporary = array[i];
-        array[i] = array[minPosition]; 
+        array[i] = array[minPosition];
         array[minPosition] = temporary;
-
     }
-
 }
 
 PrintArray(arr);
 SelectionSort(arr);
 PrintArray(arr);
+*/
+//Задача. Упорядочить массивв обратном порядке.
+/*
+int[] array2 = { 1, 5, 2, 6, 7, 9, 3, 1, 2, 6, 4, 5, 10, 0 };
+
+void PrintArray(int[] array)
+{
+    int count = array.Length;
+
+    for (int i = 0; i < count; i++)
+    {
+        Console.Write($"{array[i]} ");
+    }
+    Console.WriteLine();
+}
+
+void SortFromMaxToMin(int[] array)
+{
+    for (int i = 0; i < array.Length - 1; i++)
+    {
+        int maxPosition = i;
+
+        for (int j = i + 1; j < array.Length; j++)
+        {
+            if (array[j] > array[maxPosition]) maxPosition = j;
+        }
+        int temporary = array[i];
+        array[i] = array[maxPosition];
+        array[maxPosition] = temporary;
+    }
+}
+
+PrintArray(array2);
+SortFromMaxToMin(array2);
+PrintArray(array2);
+*/
